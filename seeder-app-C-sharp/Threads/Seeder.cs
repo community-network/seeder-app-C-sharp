@@ -28,12 +28,12 @@ namespace seeder_app_C_sharp.Threads
                 try
                 {
                     PrepareSeeder();
+                    Api.PingBackend(this.config, this.game_info);
                 }
                 catch (Exception)
                 {
 
                 }
-                Api.PingBackend(this.config, this.game_info);
                 Thread.Sleep(10000);
             }
         }
