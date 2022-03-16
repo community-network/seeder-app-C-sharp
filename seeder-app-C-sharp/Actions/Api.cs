@@ -28,7 +28,7 @@ namespace seeder_app_C_sharp.Actions
         public static Structs.ServerList FindServer(Config config)
         {
             WebClient webClient = new WebClient();
-            webClient.QueryString.Add("name", config.messageServer);
+            webClient.QueryString.Add("name", WebUtility.UrlEncode(config.messageServer));
             webClient.QueryString.Add("region", "all");
             webClient.QueryString.Add("platform", "pc");
             webClient.QueryString.Add("limit", "1");
@@ -36,6 +36,27 @@ namespace seeder_app_C_sharp.Actions
             string data = webClient.DownloadString(new Uri("https://api.gametools.network/bf1/servers/"));
             JavaScriptSerializer json_serializer = new JavaScriptSerializer();
             return json_serializer.Deserialize<Structs.ServerList>(data);
+        }
+
+        public static void PostPlayerlist(GameReader.CurrentServerReader current_server_reader, string currentServerId)
+        {
+            var post = new {
+                serverinfo = new {
+                    name = current_server_reader.ServerName,
+                    gameId = currentServerId
+                }, 
+                teams = new { 
+                    team1 = current_server_reader.PlayerLists_Team1, 
+                    team2 = current_server_reader.PlayerLists_Team2 
+                }
+            };
+            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
+            var dataString = json_serializer.Serialize(post);
+            WebClient webClient = new WebClient();
+            webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+            Int64 unixTimestamp = (Int64)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+            webClient.Headers.Add("authentication", (unixTimestamp / 60 * 5963827110).ToString());
+            webClient.UploadString(new Uri("http://10.0.0.20:8787/seederplayerlist/bf1"), "POST", dataString);
         }
     }
 }

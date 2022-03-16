@@ -25,7 +25,7 @@ namespace seeder_app_C_sharp.Threads
                 }
                 if (this.states.message_running)
                 {
-                    if (this.states.message_timeout >= (config.messageTimeout))
+                    if (this.states.message_timeout >= (config.messageTimeout) && this.config.sendMessage.Count > 0)
                     {
                         List<string> messages = this.config.sendMessage;
                         string message = messages[states.current_message_id];
@@ -44,7 +44,7 @@ namespace seeder_app_C_sharp.Threads
                         }
                     } else
                     {
-                        this.states.program_state = "Idle in message server";
+                        this.states.program_state = this.config.sendMessage.Count > 0 ? "Idle in message server" : "No messages set!";
                         states.message_timeout++;
                         RunAfk();
                     }

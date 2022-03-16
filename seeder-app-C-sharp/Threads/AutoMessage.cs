@@ -7,6 +7,8 @@ namespace seeder_app_C_sharp.Threads
     {
         private Config config;
         private States states;
+        private string currentServerId;
+
         public AutoMessage(States states, Config config)
         {
             this.config = config;
@@ -35,13 +37,34 @@ namespace seeder_app_C_sharp.Threads
                             {
                                 this.states.program_state = "Joining for automessage with ID: " + server_list.servers[0].gameId;
                                 Game.Launch(config, server_list.servers[0].gameId, "spectator");
+                                this.currentServerId = server_list.servers[0].gameId;
+                            }
+                        } else
+                        {
+                            GameReader.CurrentServerReader current_server_reader = new GameReader.CurrentServerReader();
+                            if (current_server_reader.hasResults && this.currentServerId != "" && this.currentServerId != null)
+                            {
+                                if (current_server_reader.PlayerLists_All.Count > 0)
+                                {
+                                    try
+                                    {
+                                        Actions.Api.PostPlayerlist(current_server_reader, this.currentServerId);
+                                    } catch (Exception)
+                                    {
+
+                                    }
+                                }
                             }
                         }
                     }
                     else
                     {
+                        this.currentServerId = "";
                         this.states.message_running = false;
                     }
+                } else
+                {
+                    this.currentServerId = "";
                 }
             }
         }

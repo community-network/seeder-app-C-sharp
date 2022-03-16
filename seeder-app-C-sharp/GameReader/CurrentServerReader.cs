@@ -52,16 +52,14 @@ namespace seeder_app_C_sharp.GameReader
 
                     PlayerLists_All.Add(new Structs.PlayerList()
                     {
-                        TeamID = TeamID,
-                        Mark = Mark,
-                        Rank = 0,
-                        Name = Name,
-                        PersionID = PersionID,
-                        Kill = 0,
-                        Dead = 0,
-                        Score = 0,
-                        KD = 0,
-                        KPM = 0
+                        teamId = TeamID,
+                        mark = Mark,
+                        rank = 0,
+                        name = Name,
+                        player_id = PersionID,
+                        kills = 0,
+                        deaths = 0,
+                        score = 0
                     });
                 }
 
@@ -85,15 +83,13 @@ namespace seeder_app_C_sharp.GameReader
                     var Dead = Memory.Read<int>(pClientScoreOffset + 0x30C);
                     var Score = Memory.Read<int>(pClientScoreOffset + 0x314);
 
-                    int index = PlayerLists_All.FindIndex(val => val.Mark == Mark);
+                    int index = PlayerLists_All.FindIndex(val => val.mark == Mark);
                     if (index != -1)
                     {
-                        PlayerLists_All[index].Rank = Rank;
-                        PlayerLists_All[index].Kill = Kill;
-                        PlayerLists_All[index].Dead = Dead;
-                        PlayerLists_All[index].Score = Score;
-                        PlayerLists_All[index].KD = 0;
-                        PlayerLists_All[index].KPM = 0;
+                        PlayerLists_All[index].rank = Rank;
+                        PlayerLists_All[index].kills = Kill;
+                        PlayerLists_All[index].deaths = Dead;
+                        PlayerLists_All[index].score = Score;
                     }
                 }
 
@@ -101,11 +97,11 @@ namespace seeder_app_C_sharp.GameReader
 
                 foreach (var item in PlayerLists_All)
                 {
-                    if (item.TeamID == 1)
+                    if (item.teamId == 1)
                     {
                         PlayerLists_Team1.Add(item);
                     }
-                    else if (item.TeamID == 2)
+                    else if (item.teamId == 2)
                     {
                         PlayerLists_Team2.Add(item);
                     }
@@ -114,20 +110,20 @@ namespace seeder_app_C_sharp.GameReader
                 //PlayerLists_Team1.Sort((a, b) => b.Score.CompareTo(a.Score));
                 //PlayerLists_Team2.Sort((a, b) => b.Score.CompareTo(a.Score));
 
-                PlayerLists_Team1 = PlayerLists_Team1.OrderByDescending(o => o.Score).ToList();
-                PlayerLists_Team2 = PlayerLists_Team2.OrderByDescending(o => o.Score).ToList();
+                PlayerLists_Team1 = PlayerLists_Team1.OrderByDescending(o => o.score).ToList();
+                PlayerLists_Team2 = PlayerLists_Team2.OrderByDescending(o => o.score).ToList();
 
                 int count = 1;
                 for (int i = 0; i < PlayerLists_Team1.Count; i++)
                 {
-                    PlayerLists_Team1[i].Index = count++;
+                    PlayerLists_Team1[i].index = count++;
                     ListBox_PlayerList_Team1.Add(PlayerLists_Team1[i]);
                 }
 
                 count = 1;
                 for (int i = 0; i < PlayerLists_Team2.Count; i++)
                 {
-                    PlayerLists_Team2[i].Index = count++;
+                    PlayerLists_Team2[i].index = count++;
                     ListBox_PlayerList_Team2.Add(PlayerLists_Team2[i]);
                 }
 
