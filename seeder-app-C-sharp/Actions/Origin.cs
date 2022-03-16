@@ -8,14 +8,10 @@ namespace seeder_app_C_sharp.Actions
     {
         public static void Restart()
         {
-            try
+            Process[] origin_process = Process.GetProcessesByName("Origin");
+            if (origin_process.Length > 0)
             {
-                Process origin_process = Process.GetProcessesByName("Origin").First();
-                origin_process.Kill();
-            }
-            catch (InvalidOperationException)
-            {
-
+                origin_process.First().Kill();
             }
             Process.Start("C:\\Program Files (x86)\\Origin\\Origin.exe", "");
         }

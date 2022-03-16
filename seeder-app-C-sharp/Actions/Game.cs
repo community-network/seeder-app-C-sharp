@@ -22,14 +22,10 @@ namespace seeder_app_C_sharp
 
         public static void Quit()
         {
-            try
+            Process[] game_process = Process.GetProcessesByName("bf1");
+            if (game_process.Length > 0)
             {
-                Process game_process = Process.GetProcessesByName("bf1").First();
-                game_process.Kill();
-            }
-            catch (InvalidOperationException)
-            {
-
+                game_process.First().Kill();
             }
         }
 

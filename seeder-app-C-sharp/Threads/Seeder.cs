@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using seeder_app_C_sharp.Actions;
 
 namespace seeder_app_C_sharp.Threads
 {
@@ -28,7 +27,7 @@ namespace seeder_app_C_sharp.Threads
                 try
                 {
                     PrepareSeeder();
-                    Api.PingBackend(this.config, this.game_info);
+                    Actions.Api.PingBackend(this.config, this.game_info);
                 }
                 catch (Exception)
                 {
@@ -40,7 +39,7 @@ namespace seeder_app_C_sharp.Threads
 
         private void PrepareSeeder()
         {
-            Structs.CurrentServer current_server = Api.Gather(this.config);
+            Structs.CurrentServer current_server = Actions.Api.Gather(this.config);
             SeederTypes.Init seeder_type = new SeederTypes.Init(new SeederTypes.LeaveServer());
 
             Int64 now = (Int64)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
