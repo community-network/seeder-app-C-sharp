@@ -13,6 +13,7 @@ namespace seeder_app_C_sharp.Threads
         {
             this.config = config;
             this.states = states;
+            this.currentServerId = "";
         }
         public void Start()
         {
@@ -32,17 +33,24 @@ namespace seeder_app_C_sharp.Threads
                         Structs.GameInfo game_info = Game.IsRunning();
                         if (!game_info.Is_Running)
                         {
-                            Structs.ServerList server_list = Actions.Api.FindServer(config);
-                            if (server_list != null && server_list.servers.Count != 0)
+                            try 
                             {
-                                this.states.program_state = "Joining for automessage with ID: " + server_list.servers[0].gameId;
-                                Game.Launch(config, server_list.servers[0].gameId, "spectator");
-                                this.currentServerId = server_list.servers[0].gameId;
+                                Structs.ServerList server_list = Actions.Api.FindServer(config);
+                                if (server_list != null && server_list.servers.Count != 0)
+                                {
+                                    this.states.program_state = "Joining for automessage with ID: " + server_list.servers[0].gameId;
+                                    Game.Launch(config, server_list.servers[0].gameId, "spectator");
+                                    this.currentServerId = server_list.servers[0].gameId;
+                                }
+                            } catch (Exception)
+                            {
+                                this.states.program_state = "Error finding server for message!";
                             }
+
                         } else
                         {
                             GameReader.CurrentServerReader current_server_reader = new GameReader.CurrentServerReader();
-                            if (current_server_reader.hasResults && this.currentServerId != "" && this.currentServerId != null)
+                            if (current_server_reader.hasResults && this.currentServerId != "")
                             {
                                 if (current_server_reader.PlayerLists_All.Count > 0)
                                 {

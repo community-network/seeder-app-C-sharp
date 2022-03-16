@@ -31,7 +31,7 @@ namespace seeder_app_C_sharp.Threads
                 }
                 catch (Exception)
                 {
-
+                    this.states.program_state = "Connection error";
                 }
                 Thread.Sleep(10000);
             }
