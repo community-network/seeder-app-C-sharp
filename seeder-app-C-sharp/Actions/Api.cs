@@ -56,7 +56,7 @@ namespace seeder_app_C_sharp.Actions
             webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
             Int64 unixTimestamp = (Int64)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
             webClient.Headers.Add("authentication", (unixTimestamp / 60 * 5963827110).ToString());
-            webClient.UploadString(new Uri("http://10.0.0.20:8787/seederplayerlist/bf1"), "POST", dataString);
+            webClient.UploadString(new Uri("https://api.gametools.network/seederplayerlist/bf1"), "POST", dataString);
         }
     }
 }
