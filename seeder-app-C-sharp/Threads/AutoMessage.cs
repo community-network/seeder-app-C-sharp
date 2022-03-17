@@ -56,7 +56,7 @@ namespace seeder_app_C_sharp.Threads
                                 {
                                     try
                                     {
-                                        Actions.Api.PostPlayerlist(current_server_reader, this.currentServerId);
+                                        Actions.Api.PostPlayerlist(current_server_reader, this.currentServerId, this.config.guid);
                                     } catch (Exception)
                                     {
 

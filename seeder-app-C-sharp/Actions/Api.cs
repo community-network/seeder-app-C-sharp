@@ -38,9 +38,11 @@ namespace seeder_app_C_sharp.Actions
             return json_serializer.Deserialize<Structs.ServerList>(data);
         }
 
-        public static void PostPlayerlist(GameReader.CurrentServerReader current_server_reader, string currentServerId)
+        public static void PostPlayerlist(GameReader.CurrentServerReader current_server_reader, string currentServerId, Guid guid)
         {
-            var post = new {
+            var post = new
+            {
+                guid = guid.ToString(),
                 serverinfo = new {
                     name = current_server_reader.ServerName,
                     gameId = currentServerId

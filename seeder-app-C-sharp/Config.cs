@@ -19,6 +19,7 @@ namespace seeder_app_C_sharp
         public bool sendMessageBool;
         public bool usableClient;
         public bool autoMinimizeOnJoin;
+        public Guid guid;
 
         public Config()
         {
@@ -42,6 +43,14 @@ namespace seeder_app_C_sharp
             sendMessageBool = Properties.Settings.Default.sendMessageBool;
             usableClient = Properties.Settings.Default.usableClient;
             autoMinimizeOnJoin = Properties.Settings.Default.autoMinimizeOnJoin;
+
+            guid = Properties.Settings.Default.Guid;
+            if (guid == new Guid())
+            {
+                guid = Guid.NewGuid();
+                Properties.Settings.Default.Guid = this.guid;
+                Properties.Settings.Default.Save();
+            }
         }
         public void RefreshMessages()
         {

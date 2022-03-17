@@ -116,6 +116,7 @@ namespace seeder_app_C_sharp
             sendMessage.Checked = config.sendMessageBool;
             usableClient.Checked = config.usableClient;
             autoMinimizeOnJoin.Checked = config.autoMinimizeOnJoin;
+            IdLabel.Text = config.guid.ToString();
         }
 
         private void Save()
@@ -149,6 +150,11 @@ namespace seeder_app_C_sharp
                 DialogResult result = edit_message.ShowDialog();
                 config.RefreshMessages();
             }
+        }
+
+        private void IdLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Clipboard.SetText(IdLabel.Text);
         }
     }
 }

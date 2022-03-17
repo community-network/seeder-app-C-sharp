@@ -61,6 +61,7 @@
             this.StateTitle = new System.Windows.Forms.Label();
             this.StateLabel = new System.Windows.Forms.Label();
             this.EditMessageButton = new System.Windows.Forms.Button();
+            this.IdLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.messageTimeout)).BeginInit();
             this.SuspendLayout();
             // 
@@ -354,11 +355,23 @@
             this.EditMessageButton.UseVisualStyleBackColor = true;
             this.EditMessageButton.Click += new System.EventHandler(this.EditMessageButton_Click);
             // 
+            // IdLabel
+            // 
+            this.IdLabel.AutoSize = true;
+            this.IdLabel.Location = new System.Drawing.Point(32, 332);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(424, 25);
+            this.IdLabel.TabIndex = 36;
+            this.IdLabel.TabStop = true;
+            this.IdLabel.Text = "00000000-0000-0000-0000-000000000000";
+            this.IdLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IdLabel_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1115, 402);
+            this.Controls.Add(this.IdLabel);
             this.Controls.Add(this.EditMessageButton);
             this.Controls.Add(this.StateLabel);
             this.Controls.Add(this.StateTitle);
@@ -436,6 +449,7 @@
         private System.Windows.Forms.Label StateTitle;
         private System.Windows.Forms.Label StateLabel;
         private System.Windows.Forms.Button EditMessageButton;
+        private System.Windows.Forms.LinkLabel IdLabel;
     }
 }
 
