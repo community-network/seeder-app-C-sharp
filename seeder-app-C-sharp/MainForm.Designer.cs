@@ -62,6 +62,7 @@
             this.StateLabel = new System.Windows.Forms.Label();
             this.EditMessageButton = new System.Windows.Forms.Button();
             this.IdLabel = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.messageTimeout)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,6 @@
             // 
             // groupIdLabel
             // 
-            this.groupIdLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupIdLabel.AutoSize = true;
             this.groupIdLabel.Location = new System.Drawing.Point(82, 19);
             this.groupIdLabel.Name = "groupIdLabel";
@@ -85,7 +85,6 @@
             // 
             // gameLocationLabel
             // 
-            this.gameLocationLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.gameLocationLabel.AutoSize = true;
             this.gameLocationLabel.Location = new System.Drawing.Point(26, 57);
             this.gameLocationLabel.Name = "gameLocationLabel";
@@ -157,7 +156,7 @@
             // 
             // nextAntiAfkProgress
             // 
-            this.nextAntiAfkProgress.Location = new System.Drawing.Point(743, 357);
+            this.nextAntiAfkProgress.Location = new System.Drawing.Point(743, 345);
             this.nextAntiAfkProgress.Name = "nextAntiAfkProgress";
             this.nextAntiAfkProgress.Size = new System.Drawing.Size(345, 23);
             this.nextAntiAfkProgress.TabIndex = 12;
@@ -171,7 +170,6 @@
             // 
             // serverToJoinLabel
             // 
-            this.serverToJoinLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.serverToJoinLabel.AutoSize = true;
             this.serverToJoinLabel.Location = new System.Drawing.Point(592, 48);
             this.serverToJoinLabel.Name = "serverToJoinLabel";
@@ -198,7 +196,6 @@
             // 
             // startTimeLabel
             // 
-            this.startTimeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.startTimeLabel.AutoSize = true;
             this.startTimeLabel.Location = new System.Drawing.Point(628, 85);
             this.startTimeLabel.Name = "startTimeLabel";
@@ -216,7 +213,6 @@
             // 
             // stopTimeLabel
             // 
-            this.stopTimeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.stopTimeLabel.AutoSize = true;
             this.stopTimeLabel.Location = new System.Drawing.Point(629, 122);
             this.stopTimeLabel.Name = "stopTimeLabel";
@@ -234,7 +230,6 @@
             // 
             // timoutLabel
             // 
-            this.timoutLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.timoutLabel.AutoSize = true;
             this.timoutLabel.Location = new System.Drawing.Point(654, 159);
             this.timoutLabel.Name = "timoutLabel";
@@ -282,9 +277,8 @@
             // 
             // antiAfkLabel
             // 
-            this.antiAfkLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.antiAfkLabel.AutoSize = true;
-            this.antiAfkLabel.Location = new System.Drawing.Point(598, 355);
+            this.antiAfkLabel.Location = new System.Drawing.Point(598, 343);
             this.antiAfkLabel.Name = "antiAfkLabel";
             this.antiAfkLabel.Size = new System.Drawing.Size(139, 25);
             this.antiAfkLabel.TabIndex = 29;
@@ -300,7 +294,6 @@
             // 
             // hostnameLabel
             // 
-            this.hostnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.hostnameLabel.AutoSize = true;
             this.hostnameLabel.Location = new System.Drawing.Point(67, 91);
             this.hostnameLabel.Name = "hostnameLabel";
@@ -325,9 +318,8 @@
             // 
             // StateTitle
             // 
-            this.StateTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.StateTitle.AutoSize = true;
-            this.StateTitle.Location = new System.Drawing.Point(32, 355);
+            this.StateTitle.Location = new System.Drawing.Point(32, 368);
             this.StateTitle.Name = "StateTitle";
             this.StateTitle.Size = new System.Drawing.Size(68, 25);
             this.StateTitle.TabIndex = 33;
@@ -336,14 +328,13 @@
             // 
             // StateLabel
             // 
-            this.StateLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(91, 355);
+            this.StateLabel.Location = new System.Drawing.Point(91, 368);
             this.StateLabel.Name = "StateLabel";
             this.StateLabel.Size = new System.Drawing.Size(46, 25);
             this.StateLabel.TabIndex = 34;
             this.StateLabel.Text = "Idle";
-            this.StateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StateLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // EditMessageButton
             // 
@@ -358,7 +349,7 @@
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
-            this.IdLabel.Location = new System.Drawing.Point(32, 332);
+            this.IdLabel.Location = new System.Drawing.Point(143, 343);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(424, 25);
             this.IdLabel.TabIndex = 36;
@@ -366,11 +357,22 @@
             this.IdLabel.Text = "00000000-0000-0000-0000-000000000000";
             this.IdLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IdLabel_LinkClicked);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 343);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 25);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Seeder ID:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1115, 402);
+            this.ClientSize = new System.Drawing.Size(1115, 412);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.IdLabel);
             this.Controls.Add(this.EditMessageButton);
             this.Controls.Add(this.StateLabel);
@@ -450,6 +452,7 @@
         private System.Windows.Forms.Label StateLabel;
         private System.Windows.Forms.Button EditMessageButton;
         private System.Windows.Forms.LinkLabel IdLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
 
