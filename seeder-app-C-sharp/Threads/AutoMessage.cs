@@ -41,6 +41,9 @@ namespace seeder_app_C_sharp.Threads
                                     this.states.program_state = "Joining for automessage with ID: " + server_list.servers[0].gameId;
                                     Game.Launch(config, server_list.servers[0].gameId, "spectator");
                                     this.currentServerId = server_list.servers[0].gameId;
+                                } else
+                                {
+                                    this.states.program_state = "No server found with that name!";
                                 }
                             } catch (Exception)
                             {
