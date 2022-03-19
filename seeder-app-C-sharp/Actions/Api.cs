@@ -28,7 +28,7 @@ namespace seeder_app_C_sharp.Actions
         public static Structs.ServerList FindServer(Config config)
         {
             WebClient webClient = new WebClient();
-            webClient.QueryString.Add("name", WebUtility.UrlEncode(config.messageServer));
+            webClient.QueryString.Add("name", Uri.EscapeDataString(config.messageServer));
             webClient.QueryString.Add("region", "all");
             webClient.QueryString.Add("platform", "pc");
             webClient.QueryString.Add("limit", "1");
