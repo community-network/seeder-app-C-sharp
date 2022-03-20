@@ -68,6 +68,7 @@ namespace seeder_app_C_sharp
 
         public void Update()
         {
+            Properties.Settings.Default.hostname = hostname;
             Properties.Settings.Default.groupId = groupId;
             Properties.Settings.Default.gameLocation = gameLocation;
             StringCollection collection = new StringCollection();
