@@ -53,9 +53,9 @@ namespace seeder_app_C_sharp.Threads
                         } else
                         {
                             GameReader.CurrentServerReader current_server_reader = new GameReader.CurrentServerReader();
-                            if (current_server_reader.hasResults && this.currentServerId != "")
+                            if (current_server_reader.hasResults)
                             {
-                                if (current_server_reader.PlayerLists_All.Count > 0)
+                                if (current_server_reader.PlayerLists_All.Count > 0 && current_server_reader.ServerName != "")
                                 {
                                     try
                                     {
