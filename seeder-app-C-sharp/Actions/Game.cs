@@ -101,7 +101,7 @@ namespace seeder_app_C_sharp
             command += " -gameMode MP -role ";
             command += role;
             command += " -asSpectator ";
-            command += (role == "spectator").ToString();
+            command += (role == "spectator").ToString().ToLower();
             try
             {
                 Process.Start(config.gameLocation, command);
