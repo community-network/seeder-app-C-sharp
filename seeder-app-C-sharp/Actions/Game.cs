@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 
 namespace seeder_app_C_sharp
@@ -12,7 +13,32 @@ namespace seeder_app_C_sharp
     {
         public static Structs.GameInfo IsRunning()
         {
-            IntPtr window_handle = FindWindow("Battlefield™ 1", null);
+            // ansi:
+            // IntPtr window_handle = FindWindow("Battlefield™ 1", null);
+
+            // unicode: (for china support)
+            IntPtr window_handle = IntPtr.Zero;
+            Process[] processes = Process.GetProcessesByName("bf1");
+            Process proc = null;
+
+            // Cycle through all top-level windows
+            EnumWindows(delegate (IntPtr hWnd, IntPtr lParam)
+            {
+                // Get PID of current window
+                GetWindowThreadProcessId(hWnd, out int processId);
+
+                // Get process matching PID
+                proc = processes.FirstOrDefault(p => p.Id == processId);
+
+                if (proc != null)
+                {
+                    window_handle = hWnd;
+                }
+
+                // return true so that we iterate through all windows
+                return true;
+            }, IntPtr.Zero);
+
             return new Structs.GameInfo
             {
                 Is_Running = window_handle != IntPtr.Zero,
@@ -85,6 +111,16 @@ namespace seeder_app_C_sharp
 
             }
         }
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
+        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
 
         // For Windows Mobile, replace user32.dll with coredll.dll
         [DllImport("user32.dll", SetLastError = true)]
