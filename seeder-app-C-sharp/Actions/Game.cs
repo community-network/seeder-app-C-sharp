@@ -94,9 +94,9 @@ namespace seeder_app_C_sharp
             string command = "";
             if (!config.usableClient)
             {
-                command += " -Window.Fullscreen false -RenderDevice.MinDriverRequired false -Core.HardwareGpuBias -1 -Core.HardwareCpuBias -1 -Core.HardwareProfile Hardware_Low -RenderDevice.CreateMinimalWindow true -RenderDevice.NullDriverEnable true -Texture.LoadingEnabled false -Texture.RenderTexturesEnabled false -Client.TerrainEnabled false -Decal.SystemEnable false";
+                command += "-Window.Fullscreen false -RenderDevice.MinDriverRequired false -Core.HardwareGpuBias -1 -Core.HardwareCpuBias -1 -Core.HardwareProfile Hardware_Low -RenderDevice.CreateMinimalWindow true -RenderDevice.NullDriverEnable true -Texture.LoadingEnabled false -Texture.RenderTexturesEnabled false -Client.TerrainEnabled false -Decal.SystemEnable false ";
             }
-            command += " -webMode MP -Origin_NoAppFocus --activate-webhelper -requestState State_ClaimReservation -gameId ";
+            command += "-webMode MP -Origin_NoAppFocus --activate-webhelper -requestState State_ClaimReservation -gameId ";
             command += game_id;
             command += " -gameMode MP -role ";
             command += role;
