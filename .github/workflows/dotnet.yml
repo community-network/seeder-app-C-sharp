@@ -16,12 +16,6 @@ jobs:
     
     - name: setup MS-build
       uses: microsoft/setup-msbuild@v1
-    
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-  
-    - name: Restore dependencies
-      run: nuget restore seeder-app-C-sharp.sln
       
     - name: Build
       run: msbuild seeder-app-C-sharp.sln
