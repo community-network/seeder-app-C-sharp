@@ -45,7 +45,7 @@ namespace seeder_app_C_sharp.Threads
                     } else
                     {
                         this.states.program_state = this.config.sendMessage.Count > 0 ? "Idle in message server" : "No messages set!";
-                        states.message_timeout++;
+                        this.states.message_timeout++;
                         RunAfk();
                     }
                 }

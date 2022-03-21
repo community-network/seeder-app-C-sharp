@@ -4,18 +4,18 @@
     {
         public override void Handle(Init seeder_type)
         {
-            if (this.game_info.Is_Running && (this.old_game_id != current_game_id && this.old_server.action != "leaveServer") || states.message_running)
+            if (this.game_info.Is_Running && (this.old_game_id != current_game_id && this.old_server.action != "leaveServer") || this.states.message_running)
             {
                 this.states.program_state = "Leaving old session";
                 Game.Quit();
-                states.message_running = false;
+                this.states.message_running = false;
             }
             if (!this.game_info.Is_Running)
             {
                 this.states.program_state = "Joining keepalive server with ID: " + this.current_game_id;
-                Game.Launch(config, current_game_id, "soldier");
+                Game.Launch(this.states, this.config, current_game_id, "soldier");
             }
-            states.game_running = true;
+            this.states.game_running = true;
         }
     }
 }

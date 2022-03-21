@@ -89,7 +89,7 @@ namespace seeder_app_C_sharp
             }
         }
 
-        public static void Launch(Config config, string game_id, string role)
+        public static void Launch(States states, Config config, string game_id, string role)
         {
             string command = "";
             if (!config.usableClient)
@@ -106,9 +106,9 @@ namespace seeder_app_C_sharp
             {
                 Process.Start(config.gameLocation, command);
             }
-            catch (FileNotFoundException)
+            catch (Exception)
             {
-
+                states.program_state = "Game not found at location!";
             }
         }
 
