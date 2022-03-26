@@ -24,7 +24,7 @@ jobs:
       uses: Nuget/setup-nuget@v1.0.5
 
     - name: Restore nuget packages
-      run: nuget restore gather-standalone.sln
+      run: nuget restore seeder-app-C-sharp.sln
     
     - name: Build
       run: msbuild seeder-app-C-sharp.sln /p:Configuration=Release /p:Platform=x64
