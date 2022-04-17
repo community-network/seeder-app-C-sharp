@@ -14,9 +14,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Find and Replace
+      run: ((Get-Content -path seeder-app-C-sharp\Jwt.cs -Raw) -replace 'SUPERSECRETPLACEHOLDER','${{ secrets.JwtToken }}') | Set-Content -Path seeder-app-C-sharp\Jwt.cs
+        
     - name: setup MS-build
       uses: microsoft/setup-msbuild@v1
-      
+    
+    - name: Setup Nuget
+      uses: Nuget/setup-nuget@v1.0.5
+
+    - name: Restore nuget packages
+      run: nuget restore seeder-app-C-sharp.sln
+    
     - name: Build
       run: msbuild seeder-app-C-sharp.sln /p:Configuration=Release /p:Platform=x64
       
