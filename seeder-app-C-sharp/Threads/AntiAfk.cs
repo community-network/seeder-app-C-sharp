@@ -51,7 +51,7 @@ namespace seeder_app_C_sharp.Threads
                 }
                 for (this.states.anti_afk_next = 0; this.states.anti_afk_next < 100; this.states.anti_afk_next++)
                 {
-                    Thread.Sleep(1200);
+                    Thread.Sleep(600);
                 }
             }
         }
@@ -61,6 +61,7 @@ namespace seeder_app_C_sharp.Threads
             Structs.GameInfo game_info = Game.IsRunning();
             if (game_info.Is_Running)
             {
+                Console.WriteLine("test");
                 IntPtr current_forground_window = GetForegroundWindow();
                 int l_param = MakeLParam(20, 20);
                 SendMessage(game_info.Game_Process, 0x201, 0, l_param);
