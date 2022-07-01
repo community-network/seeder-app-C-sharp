@@ -59,13 +59,13 @@ namespace seeder_app_C_sharp.Threads
         private void RunAfk()
         {
             Structs.GameInfo game_info = Game.IsRunning();
+            Console.Write("anti-afk run: "+game_info.Is_Running);
             if (game_info.Is_Running)
             {
-                Console.WriteLine("test");
                 IntPtr current_forground_window = GetForegroundWindow();
                 int l_param = MakeLParam(20, 20);
-                SendMessage(game_info.Game_Process, 0x201, 0, l_param);
-                SendMessage(game_info.Game_Process, 0x202, 0, l_param);
+                SendMessageW(game_info.Game_Process, 0x201, 0, l_param);
+                SendMessageW(game_info.Game_Process, 0x202, 0, l_param);
                 SetForegroundWindow(current_forground_window);
             }
         }
@@ -83,6 +83,6 @@ namespace seeder_app_C_sharp.Threads
         public static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg, int wParam, int lParam);
     }
 }
