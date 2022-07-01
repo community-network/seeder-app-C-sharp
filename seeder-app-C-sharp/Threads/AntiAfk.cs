@@ -59,7 +59,6 @@ namespace seeder_app_C_sharp.Threads
         private void RunAfk()
         {
             Structs.GameInfo game_info = Game.IsRunning();
-            Console.Write("anti-afk run: "+game_info.Is_Running);
             if (game_info.Is_Running)
             {
                 IntPtr current_forground_window = GetForegroundWindow();
