@@ -8,6 +8,7 @@
         public int anti_afk_next = 0;
         public int message_timeout = 0;
         public int current_message_id = 0;
+        public string current_server = "";
         public string program_state = "Idle";
     }
 }

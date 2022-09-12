@@ -63,22 +63,26 @@
             this.EditMessageButton = new System.Windows.Forms.Button();
             this.IdLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.CurrentServerLabel = new System.Windows.Forms.Label();
+            this.CurrentServerText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.messageTimeout)).BeginInit();
             this.SuspendLayout();
             // 
             // groupId
             // 
-            this.groupId.Location = new System.Drawing.Point(188, 17);
+            this.groupId.Location = new System.Drawing.Point(94, 8);
+            this.groupId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupId.Name = "groupId";
-            this.groupId.Size = new System.Drawing.Size(345, 31);
+            this.groupId.Size = new System.Drawing.Size(174, 20);
             this.groupId.TabIndex = 0;
             // 
             // groupIdLabel
             // 
             this.groupIdLabel.AutoSize = true;
-            this.groupIdLabel.Location = new System.Drawing.Point(82, 19);
+            this.groupIdLabel.Location = new System.Drawing.Point(41, 10);
+            this.groupIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.groupIdLabel.Name = "groupIdLabel";
-            this.groupIdLabel.Size = new System.Drawing.Size(100, 25);
+            this.groupIdLabel.Size = new System.Drawing.Size(50, 13);
             this.groupIdLabel.TabIndex = 1;
             this.groupIdLabel.Text = "Group id:";
             this.groupIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -86,26 +90,29 @@
             // gameLocationLabel
             // 
             this.gameLocationLabel.AutoSize = true;
-            this.gameLocationLabel.Location = new System.Drawing.Point(26, 57);
+            this.gameLocationLabel.Location = new System.Drawing.Point(13, 28);
+            this.gameLocationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gameLocationLabel.Name = "gameLocationLabel";
-            this.gameLocationLabel.Size = new System.Drawing.Size(156, 25);
+            this.gameLocationLabel.Size = new System.Drawing.Size(78, 13);
             this.gameLocationLabel.TabIndex = 2;
             this.gameLocationLabel.Text = "Game location:";
             this.gameLocationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // gameLocation
             // 
-            this.gameLocation.Location = new System.Drawing.Point(188, 54);
+            this.gameLocation.Location = new System.Drawing.Point(94, 27);
+            this.gameLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gameLocation.Name = "gameLocation";
-            this.gameLocation.Size = new System.Drawing.Size(345, 31);
+            this.gameLocation.Size = new System.Drawing.Size(174, 20);
             this.gameLocation.TabIndex = 3;
             // 
             // allowShutdown
             // 
             this.allowShutdown.AutoSize = true;
-            this.allowShutdown.Location = new System.Drawing.Point(188, 140);
+            this.allowShutdown.Location = new System.Drawing.Point(94, 70);
+            this.allowShutdown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.allowShutdown.Name = "allowShutdown";
-            this.allowShutdown.Size = new System.Drawing.Size(193, 29);
+            this.allowShutdown.Size = new System.Drawing.Size(100, 17);
             this.allowShutdown.TabIndex = 4;
             this.allowShutdown.Text = "Allow shutdown";
             this.allowShutdown.UseVisualStyleBackColor = true;
@@ -113,9 +120,10 @@
             // sendMessage
             // 
             this.sendMessage.AutoSize = true;
-            this.sendMessage.Location = new System.Drawing.Point(188, 175);
+            this.sendMessage.Location = new System.Drawing.Point(94, 88);
+            this.sendMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.sendMessage.Name = "sendMessage";
-            this.sendMessage.Size = new System.Drawing.Size(198, 29);
+            this.sendMessage.Size = new System.Drawing.Size(101, 17);
             this.sendMessage.TabIndex = 5;
             this.sendMessage.Text = "Send messages";
             this.sendMessage.UseVisualStyleBackColor = true;
@@ -123,9 +131,10 @@
             // usableClient
             // 
             this.usableClient.AutoSize = true;
-            this.usableClient.Location = new System.Drawing.Point(188, 210);
+            this.usableClient.Location = new System.Drawing.Point(94, 105);
+            this.usableClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.usableClient.Name = "usableClient";
-            this.usableClient.Size = new System.Drawing.Size(227, 29);
+            this.usableClient.Size = new System.Drawing.Size(116, 17);
             this.usableClient.TabIndex = 6;
             this.usableClient.Text = "Usable client mode";
             this.usableClient.UseVisualStyleBackColor = true;
@@ -133,107 +142,120 @@
             // autoMinimizeOnJoin
             // 
             this.autoMinimizeOnJoin.AutoSize = true;
-            this.autoMinimizeOnJoin.Location = new System.Drawing.Point(188, 245);
+            this.autoMinimizeOnJoin.Location = new System.Drawing.Point(94, 122);
+            this.autoMinimizeOnJoin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.autoMinimizeOnJoin.Name = "autoMinimizeOnJoin";
-            this.autoMinimizeOnJoin.Size = new System.Drawing.Size(248, 29);
+            this.autoMinimizeOnJoin.Size = new System.Drawing.Size(124, 17);
             this.autoMinimizeOnJoin.TabIndex = 7;
             this.autoMinimizeOnJoin.Text = "Auto minimize on join";
             this.autoMinimizeOnJoin.UseVisualStyleBackColor = true;
             // 
             // seedingProgress
             // 
-            this.seedingProgress.Location = new System.Drawing.Point(705, 277);
+            this.seedingProgress.Location = new System.Drawing.Point(352, 138);
+            this.seedingProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.seedingProgress.Name = "seedingProgress";
-            this.seedingProgress.Size = new System.Drawing.Size(26, 23);
+            this.seedingProgress.Size = new System.Drawing.Size(13, 12);
             this.seedingProgress.TabIndex = 10;
             // 
             // messageProgress
             // 
-            this.messageProgress.Location = new System.Drawing.Point(705, 306);
+            this.messageProgress.Location = new System.Drawing.Point(352, 153);
+            this.messageProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.messageProgress.Name = "messageProgress";
-            this.messageProgress.Size = new System.Drawing.Size(26, 23);
+            this.messageProgress.Size = new System.Drawing.Size(13, 12);
             this.messageProgress.TabIndex = 11;
             // 
             // nextAntiAfkProgress
             // 
-            this.nextAntiAfkProgress.Location = new System.Drawing.Point(743, 345);
+            this.nextAntiAfkProgress.Location = new System.Drawing.Point(372, 172);
+            this.nextAntiAfkProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nextAntiAfkProgress.Name = "nextAntiAfkProgress";
-            this.nextAntiAfkProgress.Size = new System.Drawing.Size(345, 23);
+            this.nextAntiAfkProgress.Size = new System.Drawing.Size(172, 12);
             this.nextAntiAfkProgress.TabIndex = 12;
             // 
             // waitProgress
             // 
-            this.waitProgress.Location = new System.Drawing.Point(705, 248);
+            this.waitProgress.Location = new System.Drawing.Point(352, 124);
+            this.waitProgress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.waitProgress.Name = "waitProgress";
-            this.waitProgress.Size = new System.Drawing.Size(26, 23);
+            this.waitProgress.Size = new System.Drawing.Size(13, 12);
             this.waitProgress.TabIndex = 13;
             // 
             // serverToJoinLabel
             // 
             this.serverToJoinLabel.AutoSize = true;
-            this.serverToJoinLabel.Location = new System.Drawing.Point(592, 48);
+            this.serverToJoinLabel.Location = new System.Drawing.Point(296, 24);
+            this.serverToJoinLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.serverToJoinLabel.Name = "serverToJoinLabel";
-            this.serverToJoinLabel.Size = new System.Drawing.Size(145, 25);
+            this.serverToJoinLabel.Size = new System.Drawing.Size(72, 13);
             this.serverToJoinLabel.TabIndex = 17;
             this.serverToJoinLabel.Text = "Server to join:";
             this.serverToJoinLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // messageServer
             // 
-            this.messageServer.Location = new System.Drawing.Point(743, 48);
+            this.messageServer.Location = new System.Drawing.Point(372, 24);
+            this.messageServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.messageServer.Name = "messageServer";
-            this.messageServer.Size = new System.Drawing.Size(345, 31);
+            this.messageServer.Size = new System.Drawing.Size(174, 20);
             this.messageServer.TabIndex = 16;
             // 
             // sendingMessageTitle
             // 
             this.sendingMessageTitle.AutoSize = true;
-            this.sendingMessageTitle.Location = new System.Drawing.Point(757, 17);
+            this.sendingMessageTitle.Location = new System.Drawing.Point(378, 8);
+            this.sendingMessageTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sendingMessageTitle.Name = "sendingMessageTitle";
-            this.sendingMessageTitle.Size = new System.Drawing.Size(195, 25);
+            this.sendingMessageTitle.Size = new System.Drawing.Size(96, 13);
             this.sendingMessageTitle.TabIndex = 18;
             this.sendingMessageTitle.Text = "Sending messages";
             // 
             // startTimeLabel
             // 
             this.startTimeLabel.AutoSize = true;
-            this.startTimeLabel.Location = new System.Drawing.Point(628, 85);
+            this.startTimeLabel.Location = new System.Drawing.Point(314, 42);
+            this.startTimeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.startTimeLabel.Name = "startTimeLabel";
-            this.startTimeLabel.Size = new System.Drawing.Size(109, 25);
+            this.startTimeLabel.Size = new System.Drawing.Size(54, 13);
             this.startTimeLabel.TabIndex = 20;
             this.startTimeLabel.Text = "Start time:";
             this.startTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // messageStart
             // 
-            this.messageStart.Location = new System.Drawing.Point(743, 85);
+            this.messageStart.Location = new System.Drawing.Point(372, 42);
+            this.messageStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.messageStart.Name = "messageStart";
-            this.messageStart.Size = new System.Drawing.Size(345, 31);
+            this.messageStart.Size = new System.Drawing.Size(174, 20);
             this.messageStart.TabIndex = 19;
             // 
             // stopTimeLabel
             // 
             this.stopTimeLabel.AutoSize = true;
-            this.stopTimeLabel.Location = new System.Drawing.Point(629, 122);
+            this.stopTimeLabel.Location = new System.Drawing.Point(314, 61);
+            this.stopTimeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.stopTimeLabel.Name = "stopTimeLabel";
-            this.stopTimeLabel.Size = new System.Drawing.Size(108, 25);
+            this.stopTimeLabel.Size = new System.Drawing.Size(54, 13);
             this.stopTimeLabel.TabIndex = 22;
             this.stopTimeLabel.Text = "Stop time:";
             this.stopTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // messageStop
             // 
-            this.messageStop.Location = new System.Drawing.Point(743, 122);
+            this.messageStop.Location = new System.Drawing.Point(372, 61);
+            this.messageStop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.messageStop.Name = "messageStop";
-            this.messageStop.Size = new System.Drawing.Size(345, 31);
+            this.messageStop.Size = new System.Drawing.Size(174, 20);
             this.messageStop.TabIndex = 21;
             // 
             // timoutLabel
             // 
             this.timoutLabel.AutoSize = true;
-            this.timoutLabel.Location = new System.Drawing.Point(654, 159);
+            this.timoutLabel.Location = new System.Drawing.Point(327, 80);
+            this.timoutLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timoutLabel.Name = "timoutLabel";
-            this.timoutLabel.Size = new System.Drawing.Size(83, 25);
+            this.timoutLabel.Size = new System.Drawing.Size(42, 13);
             this.timoutLabel.TabIndex = 24;
             this.timoutLabel.Text = "Timout:";
             this.timoutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -241,17 +263,19 @@
             // waitForActionLabel
             // 
             this.waitForActionLabel.AutoSize = true;
-            this.waitForActionLabel.Location = new System.Drawing.Point(738, 247);
+            this.waitForActionLabel.Location = new System.Drawing.Point(369, 124);
+            this.waitForActionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.waitForActionLabel.Name = "waitForActionLabel";
-            this.waitForActionLabel.Size = new System.Drawing.Size(179, 25);
+            this.waitForActionLabel.Size = new System.Drawing.Size(90, 13);
             this.waitForActionLabel.TabIndex = 25;
             this.waitForActionLabel.Text = "Waiting for action";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(255, 287);
+            this.saveButton.Location = new System.Drawing.Point(128, 144);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(113, 42);
+            this.saveButton.Size = new System.Drawing.Size(56, 21);
             this.saveButton.TabIndex = 26;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -260,44 +284,49 @@
             // seedingLabel
             // 
             this.seedingLabel.AutoSize = true;
-            this.seedingLabel.Location = new System.Drawing.Point(738, 277);
+            this.seedingLabel.Location = new System.Drawing.Point(369, 138);
+            this.seedingLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.seedingLabel.Name = "seedingLabel";
-            this.seedingLabel.Size = new System.Drawing.Size(91, 25);
+            this.seedingLabel.Size = new System.Drawing.Size(46, 13);
             this.seedingLabel.TabIndex = 27;
             this.seedingLabel.Text = "Seeding";
             // 
             // sendingMessageLabel
             // 
             this.sendingMessageLabel.AutoSize = true;
-            this.sendingMessageLabel.Location = new System.Drawing.Point(738, 306);
+            this.sendingMessageLabel.Location = new System.Drawing.Point(369, 153);
+            this.sendingMessageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sendingMessageLabel.Name = "sendingMessageLabel";
-            this.sendingMessageLabel.Size = new System.Drawing.Size(184, 25);
+            this.sendingMessageLabel.Size = new System.Drawing.Size(91, 13);
             this.sendingMessageLabel.TabIndex = 28;
             this.sendingMessageLabel.Text = "Sending message";
             // 
             // antiAfkLabel
             // 
             this.antiAfkLabel.AutoSize = true;
-            this.antiAfkLabel.Location = new System.Drawing.Point(598, 343);
+            this.antiAfkLabel.Location = new System.Drawing.Point(299, 172);
+            this.antiAfkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.antiAfkLabel.Name = "antiAfkLabel";
-            this.antiAfkLabel.Size = new System.Drawing.Size(139, 25);
+            this.antiAfkLabel.Size = new System.Drawing.Size(70, 13);
             this.antiAfkLabel.TabIndex = 29;
             this.antiAfkLabel.Text = "Next anti-afk:";
             this.antiAfkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // hostname
             // 
-            this.hostname.Location = new System.Drawing.Point(188, 91);
+            this.hostname.Location = new System.Drawing.Point(94, 46);
+            this.hostname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.hostname.Name = "hostname";
-            this.hostname.Size = new System.Drawing.Size(345, 31);
+            this.hostname.Size = new System.Drawing.Size(174, 20);
             this.hostname.TabIndex = 30;
             // 
             // hostnameLabel
             // 
             this.hostnameLabel.AutoSize = true;
-            this.hostnameLabel.Location = new System.Drawing.Point(67, 91);
+            this.hostnameLabel.Location = new System.Drawing.Point(34, 46);
+            this.hostnameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hostnameLabel.Name = "hostnameLabel";
-            this.hostnameLabel.Size = new System.Drawing.Size(115, 25);
+            this.hostnameLabel.Size = new System.Drawing.Size(58, 13);
             this.hostnameLabel.TabIndex = 31;
             this.hostnameLabel.Text = "Hostname:";
             this.hostnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -305,23 +334,26 @@
             // saveText
             // 
             this.saveText.Location = new System.Drawing.Point(0, 0);
+            this.saveText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.saveText.Name = "saveText";
-            this.saveText.Size = new System.Drawing.Size(100, 23);
+            this.saveText.Size = new System.Drawing.Size(50, 12);
             this.saveText.TabIndex = 0;
             // 
             // messageTimeout
             // 
-            this.messageTimeout.Location = new System.Drawing.Point(743, 157);
+            this.messageTimeout.Location = new System.Drawing.Point(372, 78);
+            this.messageTimeout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.messageTimeout.Name = "messageTimeout";
-            this.messageTimeout.Size = new System.Drawing.Size(345, 31);
+            this.messageTimeout.Size = new System.Drawing.Size(172, 20);
             this.messageTimeout.TabIndex = 32;
             // 
             // StateTitle
             // 
             this.StateTitle.AutoSize = true;
-            this.StateTitle.Location = new System.Drawing.Point(32, 368);
+            this.StateTitle.Location = new System.Drawing.Point(16, 184);
+            this.StateTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StateTitle.Name = "StateTitle";
-            this.StateTitle.Size = new System.Drawing.Size(68, 25);
+            this.StateTitle.Size = new System.Drawing.Size(35, 13);
             this.StateTitle.TabIndex = 33;
             this.StateTitle.Text = "State:";
             this.StateTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -329,18 +361,20 @@
             // StateLabel
             // 
             this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(91, 368);
+            this.StateLabel.Location = new System.Drawing.Point(46, 184);
+            this.StateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StateLabel.Name = "StateLabel";
-            this.StateLabel.Size = new System.Drawing.Size(46, 25);
+            this.StateLabel.Size = new System.Drawing.Size(24, 13);
             this.StateLabel.TabIndex = 34;
             this.StateLabel.Text = "Idle";
             this.StateLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // EditMessageButton
             // 
-            this.EditMessageButton.Location = new System.Drawing.Point(743, 195);
+            this.EditMessageButton.Location = new System.Drawing.Point(372, 98);
+            this.EditMessageButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditMessageButton.Name = "EditMessageButton";
-            this.EditMessageButton.Size = new System.Drawing.Size(184, 44);
+            this.EditMessageButton.Size = new System.Drawing.Size(92, 22);
             this.EditMessageButton.TabIndex = 35;
             this.EditMessageButton.Text = "Edit messages";
             this.EditMessageButton.UseVisualStyleBackColor = true;
@@ -349,9 +383,10 @@
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
-            this.IdLabel.Location = new System.Drawing.Point(143, 343);
+            this.IdLabel.Location = new System.Drawing.Point(72, 172);
+            this.IdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.IdLabel.Name = "IdLabel";
-            this.IdLabel.Size = new System.Drawing.Size(424, 25);
+            this.IdLabel.Size = new System.Drawing.Size(211, 13);
             this.IdLabel.TabIndex = 36;
             this.IdLabel.TabStop = true;
             this.IdLabel.Text = "00000000-0000-0000-0000-000000000000";
@@ -360,18 +395,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 343);
+            this.label1.Location = new System.Drawing.Point(16, 172);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 25);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 37;
             this.label1.Text = "Seeder ID:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // CurrentServerLabel
+            // 
+            this.CurrentServerLabel.AutoSize = true;
+            this.CurrentServerLabel.Location = new System.Drawing.Point(299, 186);
+            this.CurrentServerLabel.Name = "CurrentServerLabel";
+            this.CurrentServerLabel.Size = new System.Drawing.Size(76, 13);
+            this.CurrentServerLabel.TabIndex = 38;
+            this.CurrentServerLabel.Text = "Current server:";
+            // 
+            // CurrentServerText
+            // 
+            this.CurrentServerText.AutoSize = true;
+            this.CurrentServerText.Location = new System.Drawing.Point(369, 187);
+            this.CurrentServerText.Name = "CurrentServerText";
+            this.CurrentServerText.Size = new System.Drawing.Size(27, 13);
+            this.CurrentServerText.TabIndex = 39;
+            this.CurrentServerText.Text = "N/A";
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1115, 412);
+            this.ClientSize = new System.Drawing.Size(558, 206);
+            this.Controls.Add(this.CurrentServerText);
+            this.Controls.Add(this.CurrentServerLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IdLabel);
             this.Controls.Add(this.EditMessageButton);
@@ -407,6 +463,7 @@
             this.Controls.Add(this.groupIdLabel);
             this.Controls.Add(this.groupId);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Battlefield 1 seeder";
@@ -453,6 +510,8 @@
         private System.Windows.Forms.Button EditMessageButton;
         private System.Windows.Forms.LinkLabel IdLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label CurrentServerLabel;
+        private System.Windows.Forms.Label CurrentServerText;
     }
 }
 

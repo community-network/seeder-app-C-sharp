@@ -67,6 +67,7 @@ namespace seeder_app_C_sharp
                 seedingProgress.Value = ProgressBool(states.game_running);
                 messageProgress.Value = ProgressBool(states.message_running);
                 StateLabel.Text = states.program_state;
+                CurrentServerText.Text = states.current_server;
                 if (states.game_running || states.message_running)
                 {
                     nextAntiAfkProgress.Value = states.anti_afk_next;

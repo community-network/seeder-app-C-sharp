@@ -15,9 +15,15 @@ namespace seeder_app_C_sharp.Actions
             return json_serializer.Deserialize<Structs.CurrentServer>(data);
         }
 
-        public static void PingBackend(Config config, Structs.GameInfo game_info)
+        public static void PingBackend(Config config, Structs.GameInfo game_info, GameReader.CurrentServerReader current_server_reader)
         {
-            var post = new { groupid = config.groupId, isrunning = game_info.Is_Running, hostname = config.hostname };
+            var post = new { 
+                groupid = config.groupId,
+                isrunning = game_info.Is_Running,
+                hostname = config.hostname,
+                servername = current_server_reader.ServerName,
+                gameid = current_server_reader.GameId
+            };
             JavaScriptSerializer json_serializer = new JavaScriptSerializer();
             var dataString = json_serializer.Serialize(post);
             WebClient webClient = new WebClient();
@@ -38,20 +44,26 @@ namespace seeder_app_C_sharp.Actions
             return json_serializer.Deserialize<Structs.ServerList>(data);
         }
 
-        public static void PostPlayerlist(GameReader.CurrentServerReader current_server_reader, string currentServerId, Guid guid)
+        public static void PostPlayerlist(GameReader.CurrentServerReader currentServerReader, Guid guid)
         {
             var post = new
             {
                 guid = guid.ToString(),
-                serverinfo = new {
-                    name = current_server_reader.ServerName,
-                    gameId = currentServerId
-                }, 
-                teams = new { 
-                    team1 = current_server_reader.PlayerLists_Team1, 
-                    team2 = current_server_reader.PlayerLists_Team2,
-                    scoreteam1 = current_server_reader.ServerScoreTeam1,
-                    scoreteam2 = current_server_reader.ServerScoreTeam2
+                serverinfo = new
+                {
+                    name = currentServerReader.ServerName,
+                    gameId = currentServerReader.GameId
+                },
+                teams = new
+                {
+                    team1 = currentServerReader.PlayerListsTeam1,
+                    team2 = currentServerReader.PlayerListsTeam2,
+                    scoreteam1 = currentServerReader.ServerScoreTeam1,
+                    scoreteam2 = currentServerReader.ServerScoreTeam2,
+                    scoreteam1FromKills = currentServerReader.Team1ScoreFromKill,
+                    scoreteam2FromKills = currentServerReader.Team2ScoreFromKill,
+                    scoreteam1FromFlags = currentServerReader.Team1ScoreFromFlags,
+                    scoreteam2FromFlags = currentServerReader.Team2ScoreFromFlags,
                 }
             };
             JavaScriptSerializer json_serializer = new JavaScriptSerializer();

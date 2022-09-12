@@ -53,13 +53,13 @@ namespace seeder_app_C_sharp.Threads
                         } else
                         {
                             GameReader.CurrentServerReader current_server_reader = new GameReader.CurrentServerReader();
-                            if (current_server_reader.hasResults)
+                            if (current_server_reader.HasResults)
                             {
-                                if (current_server_reader.PlayerLists_All.Count > 0 && current_server_reader.ServerName != "")
+                                if (current_server_reader.PlayerListsAll.Count > 0 && current_server_reader.ServerName != "")
                                 {
                                     try
                                     {
-                                        Actions.Api.PostPlayerlist(current_server_reader, this.currentServerId, this.config.guid);
+                                        Actions.Api.PostPlayerlist(current_server_reader, this.config.guid);
                                     } catch (Exception)
                                     {
 
