@@ -107,7 +107,7 @@ namespace seeder_app_C_sharp.Threads
             return (current_game_id, new_game_id, seeder_type);
         }
 
-        private void SeedServer(Structs.CurrentServer new_server, SeederTypes.Init seeder_type, string current_game_id, bool a_hour)
+        private void SeedServer(Structs.CurrentServer new_server, SeederTypes.Init seeder_type, string new_game_id, bool a_hour)
         {
             // run once
             if (new_server.timeStamp != old_server.timeStamp && !a_hour)
@@ -126,7 +126,7 @@ namespace seeder_app_C_sharp.Threads
                 if (!game_info.Is_Running && ((new_server.action == "joinServer" && new_server.rejoin) || seeder_type.State.GetType().Name == "KeepAlive"))
                 {
                     this.states.program_state = "Relaunching the game...";
-                    Game.Launch(this.states, this.config, current_game_id, "soldier");
+                    Game.Launch(this.states, this.config, new_game_id, "soldier");
                 // minimize after launch
                 } else if (game_info.Is_Running && !this.states.minimized_on_start)
                 {
