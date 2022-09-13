@@ -13,32 +13,7 @@ namespace seeder_app_C_sharp
     {
         public static Structs.GameInfo IsRunning()
         {
-            // ansi:
-            // IntPtr window_handle = FindWindow("Battlefield™ 1", null);
-
-            // unicode: (for china support)
-            IntPtr window_handle = IntPtr.Zero;
-            Process[] processes = Process.GetProcessesByName("bf1");
-            Process proc = null;
-
-            // Cycle through all top-level windows
-            EnumWindows(delegate (IntPtr hWnd, IntPtr lParam)
-            {
-                // Get PID of current window
-                GetWindowThreadProcessId(hWnd, out int processId);
-
-                // Get process matching PID
-                proc = processes.FirstOrDefault(p => p.Id == processId);
-
-                if (proc != null)
-                {
-                    window_handle = hWnd;
-                }
-
-                // return true so that we iterate through all windows
-                return true;
-            }, IntPtr.Zero);
-
+            IntPtr window_handle = FindWindow("Battlefield™ 1", null);
             return new Structs.GameInfo
             {
                 Is_Running = window_handle != IntPtr.Zero,
@@ -48,6 +23,7 @@ namespace seeder_app_C_sharp
 
         public static void Quit()
         {
+            Console.WriteLine("Leaving server...");
             Process[] game_process = Process.GetProcessesByName("bf1");
             if (game_process.Length > 0)
             {
@@ -57,6 +33,7 @@ namespace seeder_app_C_sharp
 
         public static void Minimize(Structs.GameInfo game_info)
         {
+            Console.WriteLine("Minimizing game...");
             if (game_info.Is_Running && !IsIconic(game_info.Game_Process))
             {
                 ShowWindow(game_info.Game_Process, 6);
@@ -91,6 +68,7 @@ namespace seeder_app_C_sharp
 
         public static void Launch(States states, Config config, string game_id, string role)
         {
+            Console.WriteLine("Launching game...");
             string command = "";
             if (!config.usableClient)
             {
@@ -112,19 +90,9 @@ namespace seeder_app_C_sharp
             }
         }
 
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
-        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
-
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
-
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
-
         // For Windows Mobile, replace user32.dll with coredll.dll
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
