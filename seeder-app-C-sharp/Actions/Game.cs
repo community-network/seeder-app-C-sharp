@@ -13,7 +13,10 @@ namespace seeder_app_C_sharp
     {
         public static Structs.GameInfo IsRunning()
         {
-            IntPtr window_handle = FindWindow("Battlefield™ 1", null);
+            IntPtr window_handle = FindWindow(null, "Battlefield™ 1");
+            Console.WriteLine("Game:");
+            Console.WriteLine(window_handle);
+            Console.WriteLine(window_handle != IntPtr.Zero);
             return new Structs.GameInfo
             {
                 Is_Running = window_handle != IntPtr.Zero,
