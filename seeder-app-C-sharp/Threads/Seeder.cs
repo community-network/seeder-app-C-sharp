@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Web.Script.Serialization;
 
 namespace seeder_app_C_sharp.Threads
 {
@@ -50,6 +51,10 @@ namespace seeder_app_C_sharp.Threads
                 {
                     this.states.program_state = "Connection error";
                 }
+
+                // print state
+                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
+                Console.WriteLine(json_serializer.Serialize(this.states));
                 Thread.Sleep(10000);
             }
         }
