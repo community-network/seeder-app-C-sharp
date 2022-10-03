@@ -31,7 +31,7 @@ jobs:
       
     - name: Create folder
       run: |
-          copy seeder-app-C-sharp\bin\x64\Release\seeder-app-C-sharp.exe build
+          copy seeder-app-C-sharp\bin\Release\net6.0-windows\seeder-app-C-sharp.exe build
           
     - name: Deploy 🚀 # deploy to the gh-pages branch
       uses: peaceiris/actions-gh-pages@v3
