@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace seeder_app_C_sharp.Threads
 {
