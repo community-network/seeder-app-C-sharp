@@ -2,15 +2,20 @@
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Threading;
+using seeder_app_C_sharp.Threads;
 
 namespace seeder_app_C_sharp
 {
     public partial class MainForm : Form
     {
+        private bool CancelUpdateInterface;
         private Config config;
         private Thread anti_afk_thread;
+        private AntiAfk anti_afk;
         private Thread seeder_thread;
+        private Seeder seeder;
         private Thread auto_message_thread;
+        private AutoMessage auto_message;
         private Thread interface_thread;
         private States states;
 
@@ -24,25 +29,26 @@ namespace seeder_app_C_sharp
         {
             Initialize_Form();
             this.states = new States();
+            CancelUpdateInterface = false;
             this.interface_thread = new Thread(new ThreadStart(UpdateInterface));
             this.interface_thread.Start();
 
-            Threads.AntiAfk anti_afk = new Threads.AntiAfk(states, config);
+            anti_afk = new AntiAfk(states, config);
             this.anti_afk_thread = new Thread(new ThreadStart(anti_afk.Start));
             this.anti_afk_thread.Start();
 
-            Threads.AutoMessage auto_message = new Threads.AutoMessage(states, config);
+            auto_message = new AutoMessage(states, config);
             this.auto_message_thread = new Thread(new ThreadStart(auto_message.Start));
             this.auto_message_thread.Start();
 
-            Threads.Seeder seeder = new Threads.Seeder(states, config);
+            seeder = new Seeder(states, config);
             this.seeder_thread = new Thread(new ThreadStart(seeder.Start));
             this.seeder_thread.Start();
         }
 
         private void UpdateInterface()
         {
-            while (true)
+            while (!CancelUpdateInterface)
             {
                 SetValues(this.states);
                 Thread.Sleep(1000);
@@ -97,10 +103,10 @@ namespace seeder_app_C_sharp
                     this.Save();
                 }
             }
-            this.interface_thread.Abort();
-            this.anti_afk_thread.Abort();
-            this.auto_message_thread.Abort();
-            this.seeder_thread.Abort();
+            this.CancelUpdateInterface = true;
+            this.anti_afk.Cancel();
+            this.auto_message.Cancel();
+            this.seeder.Cancel();
         }
 
         private void Initialize_Form()

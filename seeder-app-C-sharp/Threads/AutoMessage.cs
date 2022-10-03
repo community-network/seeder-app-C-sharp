@@ -5,19 +5,21 @@ namespace seeder_app_C_sharp.Threads
 {
     internal class AutoMessage
     {
+        private bool _disposed;
         private Config config;
         private States states;
         private string currentServerId;
 
         public AutoMessage(States states, Config config)
         {
+            this._disposed = false;
             this.config = config;
             this.states = states;
             this.currentServerId = "";
         }
         public void Start()
         {
-            while (true)
+            while (!this._disposed)
             {
                 Thread.Sleep(10000);
                 if (!this.states.game_running && this.config.sendMessageBool)
@@ -78,6 +80,11 @@ namespace seeder_app_C_sharp.Threads
                     this.currentServerId = "";
                 }
             }
+        }
+
+        public void Cancel()
+        {
+            this._disposed = true;
         }
     }
 }

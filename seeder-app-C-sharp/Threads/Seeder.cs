@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Web.Script.Serialization;
 
 namespace seeder_app_C_sharp.Threads
 {
     internal class Seeder
     {
+        private bool _disposed;
         private Config config;
         private States states;
         private Structs.CurrentServer old_server;
@@ -16,6 +17,7 @@ namespace seeder_app_C_sharp.Threads
 
         public Seeder(States states, Config config)
         {
+            this._disposed = false;
             this.states = states;
             this.config = config;
             Int64 now = (Int64)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
@@ -24,7 +26,7 @@ namespace seeder_app_C_sharp.Threads
 
         public void Start()
         {
-            while (true)
+            while (!this._disposed)
             {
                 this.game_info = Game.IsRunning();
                 try
@@ -53,10 +55,14 @@ namespace seeder_app_C_sharp.Threads
                 }
 
                 // print state
-                JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-                Console.WriteLine(json_serializer.Serialize(this.states));
+                Console.WriteLine(JsonConvert.SerializeObject(this.states));
                 Thread.Sleep(10000);
             }
+        }
+
+        public void Cancel()
+        {
+            this._disposed = true;
         }
 
         private void PrepareSeeder()

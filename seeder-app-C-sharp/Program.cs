@@ -20,6 +20,7 @@ namespace seeder_app_C_sharp
                 SetProcessDPIAware();
 
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }

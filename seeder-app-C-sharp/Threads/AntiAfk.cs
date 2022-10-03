@@ -7,17 +7,19 @@ namespace seeder_app_C_sharp.Threads
 {
     internal class AntiAfk
     {
+        private bool _disposed;
         private States states;
         private Config config;
 
         public AntiAfk(States states, Config config)
         {
+            this._disposed = false;
             this.states = states;
             this.config = config;
         }
         public void Start()
         {
-            while (true)
+            while (!_disposed)
             {
                 if (this.states.game_running)
                 {
@@ -54,6 +56,11 @@ namespace seeder_app_C_sharp.Threads
                     Thread.Sleep(600);
                 }
             }
+        }
+
+        public void Cancel()
+        {
+            this._disposed = true;
         }
 
         private void RunAfk()

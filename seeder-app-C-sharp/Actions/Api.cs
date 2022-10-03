@@ -1,6 +1,9 @@
 ﻿using System;
-using System.Net;
-using System.Web.Script.Serialization;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using Microsoft.AspNetCore.WebUtilities;
+using Newtonsoft.Json;
 
 namespace seeder_app_C_sharp.Actions
 {
@@ -8,45 +11,50 @@ namespace seeder_app_C_sharp.Actions
     {
         public static Structs.CurrentServer Gather(Config config)
         {
-            WebClient webClient = new WebClient();
-            webClient.QueryString.Add("groupid", config.groupId);
-            string data = webClient.DownloadString(new Uri("https://manager-api.gametools.network/api/getseeder"));
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-            return json_serializer.Deserialize<Structs.CurrentServer>(data);
+            var query = new Dictionary<string, string>()
+            {
+                ["groupid"] = config.groupId
+            };
+            var uri = QueryHelpers.AddQueryString("https://manager-api.gametools.network/api/getseeder", query);
+            HttpResponseMessage httpResponse = new HttpClient().GetAsync(uri).Result;
+            string responseContent = httpResponse.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<Structs.CurrentServer>(responseContent);
         }
 
         public static void PingBackend(Config config, Structs.GameInfo game_info, GameReader.CurrentServerReader current_server_reader)
         {
-            var post = new { 
+            var payload = new { 
                 groupid = config.groupId,
                 isrunning = game_info.Is_Running,
                 hostname = config.hostname,
                 servername = current_server_reader.ServerName,
                 gameid = current_server_reader.GameId
             };
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-            var dataString = json_serializer.Serialize(post);
-            WebClient webClient = new WebClient();
-            webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-            webClient.UploadString(new Uri("https://manager-api.gametools.network/api/seederinfo"), "POST", dataString);
+            string stringPayload = JsonConvert.SerializeObject(payload);
+            StringContent httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+            HttpResponseMessage httpResponse = new HttpClient().PostAsync("https://manager-api.gametools.network/api/seederinfo", httpContent).Result;
+            _ = httpResponse.Content.ReadAsStringAsync().Result;
         }
 
         public static Structs.ServerList FindServer(Config config)
         {
-            WebClient webClient = new WebClient();
-            webClient.QueryString.Add("name", Uri.EscapeDataString(config.messageServer));
-            webClient.QueryString.Add("region", "all");
-            webClient.QueryString.Add("platform", "pc");
-            webClient.QueryString.Add("limit", "1");
-            webClient.QueryString.Add("lang", "en-us");
-            string data = webClient.DownloadString(new Uri("https://api.gametools.network/bf1/servers/"));
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-            return json_serializer.Deserialize<Structs.ServerList>(data);
+            var query = new Dictionary<string, string>()
+            {
+                ["name"] = Uri.EscapeDataString(config.messageServer),
+                ["region"] = "all",
+                ["platform"] = "pc",
+                ["limit"] = "1",
+                ["lang"] = "en-us"
+            };
+            var uri = QueryHelpers.AddQueryString("https://api.gametools.network/bf1/servers/", query);
+            HttpResponseMessage httpResponse = new HttpClient().GetAsync(uri).Result;
+            string responseContent = httpResponse.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<Structs.ServerList>(responseContent);
         }
 
         public static void PostPlayerlist(GameReader.CurrentServerReader currentServerReader, Guid guid)
         {
-            var post = new
+            var payload = new
             {
                 guid = guid.ToString(),
                 serverinfo = new
@@ -66,13 +74,12 @@ namespace seeder_app_C_sharp.Actions
                     scoreteam2FromFlags = currentServerReader.Team2ScoreFromFlags,
                 }
             };
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-            string dataString = json_serializer.Serialize(post);
-            WebClient webClient = new WebClient();
+            string dataString = JsonConvert.SerializeObject(payload);
             string jwtData = Jwt.Create(guid, dataString);
-            webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-            string postData = json_serializer.Serialize(new { data = jwtData });
-            webClient.UploadString(new Uri("https://api.gametools.network/seederplayerlist/bf1"), "POST", postData);
+            string stringPayload = JsonConvert.SerializeObject(new { data = jwtData });
+            StringContent httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+            HttpResponseMessage httpResponse = new HttpClient().PostAsync("https://api.gametools.network/seederplayerlist/bf1", httpContent).Result;
+            _ = httpResponse.Content.ReadAsStringAsync().Result;
         }
     }
 }
