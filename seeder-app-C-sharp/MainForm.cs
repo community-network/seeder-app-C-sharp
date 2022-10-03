@@ -50,7 +50,13 @@ namespace seeder_app_C_sharp
         {
             while (!CancelUpdateInterface)
             {
-                SetValues(this.states);
+                try
+                {
+                    SetValues(this.states);
+                } catch
+                {
+                    Console.WriteLine("Interface didnt update!");
+                }
                 Thread.Sleep(1000);
             }
         }

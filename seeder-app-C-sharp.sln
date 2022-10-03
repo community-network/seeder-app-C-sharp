@@ -17,8 +17,8 @@ Global
 		{C79CD347-3B9A-4601-8166-30B6882A9904}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{C79CD347-3B9A-4601-8166-30B6882A9904}.Debug|x64.Build.0 = Debug|Any CPU
 		{C79CD347-3B9A-4601-8166-30B6882A9904}.Release|Any CPU.ActiveCfg = Release|x64
-		{C79CD347-3B9A-4601-8166-30B6882A9904}.Release|x64.ActiveCfg = Release|x64
-		{C79CD347-3B9A-4601-8166-30B6882A9904}.Release|x64.Build.0 = Release|x64
+		{C79CD347-3B9A-4601-8166-30B6882A9904}.Release|x64.ActiveCfg = Release|Any CPU
+		{C79CD347-3B9A-4601-8166-30B6882A9904}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
