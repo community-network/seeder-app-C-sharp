@@ -9,29 +9,31 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Find and Replace
       run: ((Get-Content -path seeder-app-C-sharp\Jwt.cs -Raw) -replace 'SUPERSECRETPLACEHOLDER','${{ secrets.JwtToken }}') | Set-Content -Path seeder-app-C-sharp\Jwt.cs
         
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+        
     - name: setup MS-build
       uses: microsoft/setup-msbuild@v1.1
     
-    - name: Setup Nuget
-      uses: Nuget/setup-nuget@v1.0.7
-
-    - name: Restore nuget packages
-      run: nuget restore seeder-app-C-sharp.sln
-    
     - name: Build
-      run: msbuild seeder-app-C-sharp.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild seeder-app-C-sharp.sln /t:Restore /p:Configuration=Release /p:Platform=x64
+      
+    - name: Run publish
+      run: dotnet publish -r win-x64 -c Release seeder-app-C-sharp\seeder-app-C-sharp.csproj
       
     - name: Create folder
       run: |
-          copy seeder-app-C-sharp\bin\Release\net6.0-windows\seeder-app-C-sharp.exe build
+          copy seeder-app-C-sharp\bin\Release\net6.0-windows\win-x64\publish\seeder-app-C-sharp.exe build
           
     - name: Deploy 🚀 # deploy to the gh-pages branch
       uses: peaceiris/actions-gh-pages@v3
