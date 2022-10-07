@@ -42,25 +42,28 @@
             // MessageList
             // 
             this.MessageList.FormattingEnabled = true;
-            this.MessageList.ItemHeight = 25;
-            this.MessageList.Location = new System.Drawing.Point(27, 74);
+            this.MessageList.ItemHeight = 15;
+            this.MessageList.Location = new System.Drawing.Point(16, 44);
+            this.MessageList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MessageList.Name = "MessageList";
-            this.MessageList.Size = new System.Drawing.Size(393, 254);
+            this.MessageList.Size = new System.Drawing.Size(231, 154);
             this.MessageList.TabIndex = 0;
             this.MessageList.SelectedIndexChanged += new System.EventHandler(this.MessageList_SelectedIndexChanged);
             // 
             // CurrentMessage
             // 
-            this.CurrentMessage.Location = new System.Drawing.Point(27, 29);
+            this.CurrentMessage.Location = new System.Drawing.Point(16, 15);
+            this.CurrentMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CurrentMessage.Name = "CurrentMessage";
-            this.CurrentMessage.Size = new System.Drawing.Size(278, 31);
+            this.CurrentMessage.Size = new System.Drawing.Size(164, 23);
             this.CurrentMessage.TabIndex = 1;
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(312, 23);
+            this.AddButton.Location = new System.Drawing.Point(182, 14);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(114, 41);
+            this.AddButton.Size = new System.Drawing.Size(66, 25);
             this.AddButton.TabIndex = 2;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@
             // MoveUpButton
             // 
             this.MoveUpButton.Enabled = false;
-            this.MoveUpButton.Location = new System.Drawing.Point(433, 75);
+            this.MoveUpButton.Location = new System.Drawing.Point(253, 45);
+            this.MoveUpButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MoveUpButton.Name = "MoveUpButton";
-            this.MoveUpButton.Size = new System.Drawing.Size(114, 41);
+            this.MoveUpButton.Size = new System.Drawing.Size(66, 25);
             this.MoveUpButton.TabIndex = 3;
             this.MoveUpButton.Text = "⮝";
             this.MoveUpButton.UseVisualStyleBackColor = true;
@@ -80,9 +84,10 @@
             // MoveDownButton
             // 
             this.MoveDownButton.Enabled = false;
-            this.MoveDownButton.Location = new System.Drawing.Point(433, 169);
+            this.MoveDownButton.Location = new System.Drawing.Point(253, 101);
+            this.MoveDownButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MoveDownButton.Name = "MoveDownButton";
-            this.MoveDownButton.Size = new System.Drawing.Size(114, 41);
+            this.MoveDownButton.Size = new System.Drawing.Size(66, 25);
             this.MoveDownButton.TabIndex = 4;
             this.MoveDownButton.Text = "⮟";
             this.MoveDownButton.UseVisualStyleBackColor = true;
@@ -91,9 +96,10 @@
             // RemoveButton
             // 
             this.RemoveButton.Enabled = false;
-            this.RemoveButton.Location = new System.Drawing.Point(433, 122);
+            this.RemoveButton.Location = new System.Drawing.Point(253, 73);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(114, 41);
+            this.RemoveButton.Size = new System.Drawing.Size(66, 25);
             this.RemoveButton.TabIndex = 4;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -101,9 +107,10 @@
             // 
             // DoneButton
             // 
-            this.DoneButton.Location = new System.Drawing.Point(433, 287);
+            this.DoneButton.Location = new System.Drawing.Point(253, 172);
+            this.DoneButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DoneButton.Name = "DoneButton";
-            this.DoneButton.Size = new System.Drawing.Size(114, 41);
+            this.DoneButton.Size = new System.Drawing.Size(66, 25);
             this.DoneButton.TabIndex = 5;
             this.DoneButton.Text = "Close";
             this.DoneButton.UseVisualStyleBackColor = true;
@@ -111,9 +118,10 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(433, 240);
+            this.SaveButton.Location = new System.Drawing.Point(253, 144);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(114, 41);
+            this.SaveButton.Size = new System.Drawing.Size(66, 25);
             this.SaveButton.TabIndex = 6;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -121,9 +129,9 @@
             // 
             // EditMessages
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 348);
+            this.ClientSize = new System.Drawing.Size(332, 209);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DoneButton);
             this.Controls.Add(this.RemoveButton);
@@ -133,6 +141,7 @@
             this.Controls.Add(this.CurrentMessage);
             this.Controls.Add(this.MessageList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "EditMessages";
             this.Text = "Edit messages";
