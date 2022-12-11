@@ -13,7 +13,7 @@
                     this.states.game_running = false;
                 }
                 this.states.program_state = "Restarting origin...";
-                Actions.Origin.Restart();
+                Game.RestartLauncher(this.config);
             }
         }
     }

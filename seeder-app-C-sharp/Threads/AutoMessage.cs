@@ -42,7 +42,7 @@ namespace seeder_app_C_sharp.Threads
                                 if (server_list != null && server_list.servers.Count != 0)
                                 {
                                     this.states.program_state = "Joining for automessage with ID: " + server_list.servers[0].gameId;
-                                    Origin.LaunchGame(this.states, this.config, server_list.servers[0].gameId, "spectator");
+                                    Game.Launch(this.states, this.config, server_list.servers[0].gameId, "spectator");
                                     this.currentServerId = server_list.servers[0].gameId;
                                 } else
                                 {

@@ -133,7 +133,7 @@ namespace seeder_app_C_sharp.Threads
                 if (!game_info.Is_Running && ((new_server.action == "joinServer" && new_server.rejoin) || seeder_type.State.GetType().Name == "KeepAlive"))
                 {
                     this.states.program_state = "Relaunching the game...";
-                    Origin.LaunchGame(this.states, this.config, new_game_id, "soldier");
+                    Game.Launch(this.states, this.config, new_game_id, "soldier");
                 // minimize after launch
                 } else if (game_info.Is_Running && !this.states.minimized_on_start)
                 {

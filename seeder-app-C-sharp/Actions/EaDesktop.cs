@@ -49,6 +49,12 @@ namespace seeder_app_C_sharp.Actions
             config_ini.Save();
         }
 
+        public static void Restart()
+        {
+            Debug.WriteLine("Restarting EA Desktop");
+            StopLauncher();
+        }
+
         public static void LaunchGame(States states, Config config, string game_id, string role)
         {
             StopLauncher();

@@ -19,6 +19,7 @@ namespace seeder_app_C_sharp
         public bool sendMessageBool;
         public bool usableClient;
         public bool autoMinimizeOnJoin;
+        public bool useEaDesktop;
         public Guid guid;
 
         public Config()
@@ -43,6 +44,7 @@ namespace seeder_app_C_sharp
             sendMessageBool = Properties.Settings.Default.sendMessageBool;
             usableClient = Properties.Settings.Default.usableClient;
             autoMinimizeOnJoin = Properties.Settings.Default.autoMinimizeOnJoin;
+            useEaDesktop = Properties.Settings.Default.useEaDesktop;
 
             guid = Properties.Settings.Default.Guid;
             if (guid == new Guid())
@@ -82,6 +84,7 @@ namespace seeder_app_C_sharp
             Properties.Settings.Default.sendMessageBool = sendMessageBool;
             Properties.Settings.Default.usableClient = usableClient;
             Properties.Settings.Default.autoMinimizeOnJoin = autoMinimizeOnJoin;
+            Properties.Settings.Default.useEaDesktop = useEaDesktop;
             Properties.Settings.Default.Save();
         }
     }

@@ -15,7 +15,7 @@ namespace seeder_app_C_sharp.Threads.SeederTypes
             if (!this.game_info.Is_Running)
             {
                 this.states.program_state = "Joining keepalive server with ID: " + this.current_game_id;
-                Origin.LaunchGame(this.states, this.config, current_game_id, "soldier");
+                Game.Launch(this.states, this.config, current_game_id, "soldier");
             }
             this.states.game_running = true;
         }

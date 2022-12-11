@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR;
+using seeder_app_C_sharp.Actions;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -64,6 +67,24 @@ namespace seeder_app_C_sharp
                 Thread.Sleep(2500);
                 ShowWindow(game_info.Game_Process, 6);
             }
+        }
+
+        public static void Launch(States states, Config config, string game_id, string role)
+        {
+            if (config.useEaDesktop) {
+                Debug.WriteLine("Launching game after EA Desktop startup...");
+                EaDesktop.LaunchGame(states, config, game_id, role);
+                return;
+            }
+            Origin.LaunchGame(states, config, game_id, role);
+        }
+
+        public static void RestartLauncher(Config config)
+        {
+            if (config.useEaDesktop)
+                EaDesktop.Restart();
+
+            Origin.Restart();
         }
 
         // For Windows Mobile, replace user32.dll with coredll.dll
