@@ -1,4 +1,6 @@
-﻿namespace seeder_app_C_sharp.Threads.SeederTypes
+﻿using seeder_app_C_sharp.Actions;
+
+namespace seeder_app_C_sharp.Threads.SeederTypes
 {
     internal class JoinServer : State
     {
@@ -11,7 +13,7 @@
                 this.states.message_running = false;
             }
             this.states.program_state = "Joining server with ID: " + this.current_game_id;
-            Game.Launch(this.states, this.config, current_game_id, "soldier");
+            Origin.LaunchGame(this.states, this.config, current_game_id, "soldier");
             this.states.minimized_on_start = false;
             this.states.game_running = true;
         }
