@@ -11,17 +11,17 @@ internal class EaDesktop
 {
     public static void StopLauncher()
     {
-        Console.WriteLine("Leaving server...");
-        Process[] game_process = Process.GetProcessesByName("EADesktop.exe");
+        Debug.WriteLine("Leaving server...");
+        Process[] game_process = Process.GetProcessesByName("EADesktop");
         if (game_process.Length > 0)
             game_process.First().Kill();
     }
 
     public static void EditLauncher(string launch_settings) {
-        if (launch_settings == "") 
-            Console.WriteLine("Resetting EA Desktop config...");
+        if (launch_settings == "")
+            Debug.WriteLine("Resetting EA Desktop config...");
         else
-            Console.WriteLine("Changing EA Desktop config...");
+            Debug.WriteLine("Changing EA Desktop config...");
 
         string appdata_local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         DirectoryInfo config_path = new DirectoryInfo(Path.GetFullPath(Path.Combine(appdata_local, @"Electronic Arts\EA Desktop")));
@@ -33,12 +33,12 @@ internal class EaDesktop
 
         if (file == null)
         {
-            Console.WriteLine("Failed to find config file for ea launcher, please login first!");
+            Debug.WriteLine("Failed to find config file for ea launcher, please login first!");
             return;
         }
 
         if (launch_settings != "")
-            Console.WriteLine("Using EA Desktop config file: {0}", file.FullName);
+            Debug.WriteLine(string.Format("Using EA Desktop config file: {0}", file.Name));
 
         iniParser config_ini = new iniParser(file.FullName);
         config_ini.Set("", "user.gamecommandline.origin.ofr.50.0000557", launch_settings);
@@ -62,7 +62,7 @@ internal class EaDesktop
         join_config += string.Format("-webMode MP -Origin_NoAppFocus --activate-webhelper -requestState State_ClaimReservation -gameId {0} -gameMode MP -role {1} -asSpectator {2}", game_id, role, (role == "spectator").ToString().ToLower());
         EditLauncher(join_config);
 
-        Console.WriteLine("Launching game...");
+        Debug.WriteLine("Launching game...");
         try
         {
             Process.Start(config.gameLocation);
@@ -81,7 +81,7 @@ internal class EaDesktop
                 break;
             }
 
-            not_running = Game.IsRunning().Is_Running;
+            not_running = !Game.IsRunning().Is_Running;
             Thread.Sleep(5000);
             timeout += 1;
         }

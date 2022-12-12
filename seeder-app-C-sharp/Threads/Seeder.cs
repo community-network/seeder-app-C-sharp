@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using Newtonsoft.Json;
 
@@ -55,7 +56,7 @@ internal class Seeder
             }
 
             // print state
-            Console.WriteLine(JsonConvert.SerializeObject(this.states));
+            Debug.WriteLine(JsonConvert.SerializeObject(this.states));
             Thread.Sleep(10000);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -68,7 +69,7 @@ internal class AntiAfk
         Structs.GameInfo game_info = Game.IsRunning();
         if (game_info.Is_Running)
         {
-            Console.WriteLine("Running anti-afk");
+            Debug.WriteLine("Running anti-afk");
             IntPtr current_forground_window = GetForegroundWindow();
             int l_param = MakeLParam(20, 20);
             SendMessageW(game_info.Game_Process, 0x201, 0, l_param);

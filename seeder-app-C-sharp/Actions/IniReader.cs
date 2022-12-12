@@ -233,7 +233,7 @@ public class iniParser
                 }
             }
         }
-        Debug.WriteLine(File + " Saved");
+        Debug.WriteLine("Inireader: file Saved");
     }
 
     /// <summary>
@@ -274,7 +274,7 @@ public class iniParser
                         }
                     }
                 }
-                Debug.WriteLine(File + " Loaded");
+                Debug.WriteLine("Inireader: file Loaded");
             }
         }
         catch (IOException e)

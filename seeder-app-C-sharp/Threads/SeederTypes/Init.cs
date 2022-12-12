@@ -50,7 +50,7 @@ internal class Init
         set
         {
             state = value;
-            // Console.WriteLine("State: " + state.GetType().Name);
+            // Debug.WriteLine("State: " + state.GetType().Name);
         }
     }
     public void Run()
