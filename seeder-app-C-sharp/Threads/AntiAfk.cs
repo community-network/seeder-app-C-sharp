@@ -23,9 +23,7 @@ internal class AntiAfk
         while (!_disposed)
         {
             if (this.states.game_running)
-            {
                 RunAfk();
-            }
             if (this.states.message_running)
             {
                 if (this.states.message_timeout >= (config.messageTimeout) && this.config.sendMessage.Count > 0)
@@ -39,12 +37,9 @@ internal class AntiAfk
                     this.states.program_state = "Idle in message server";
 
                     if (this.states.current_message_id + 1 >= messages.Count)
-                    {
                         this.states.current_message_id = 0;
-                    } else
-                    {
+                    else
                         this.states.current_message_id++;
-                    }
                 } else
                 {
                     this.states.program_state = this.config.sendMessage.Count > 0 ? "Idle in message server" : "No messages set!";
@@ -53,9 +48,7 @@ internal class AntiAfk
                 }
             }
             for (this.states.anti_afk_next = 0; this.states.anti_afk_next < 100; this.states.anti_afk_next++)
-            {
                 Thread.Sleep(600);
-            }
         }
     }
 

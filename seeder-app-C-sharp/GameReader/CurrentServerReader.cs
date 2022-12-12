@@ -172,13 +172,9 @@ internal class CurrentServerReader
             foreach (var item in PlayerListsAll)
             {
                 if (item.teamId == 1)
-                {
                     PlayerListsTeam1.Add(item);
-                }
                 else if (item.teamId == 2)
-                {
                     PlayerListsTeam2.Add(item);
-                }
             }
 
             //PlayerLists_Team1.Sort((a, b) => b.Score.CompareTo(a.Score));

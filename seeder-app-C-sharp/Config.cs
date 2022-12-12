@@ -26,15 +26,24 @@ internal class Config
     {
         string hostnameVar = Properties.Settings.Default.hostname;
         if (hostnameVar == "")
-        {
             hostname = Environment.GetEnvironmentVariable("COMPUTERNAME");
+        else
+            hostname = hostnameVar;
+
+        if (Properties.Settings.Default.gameLocation == "")
+        {
+            gameLocation = Game.GameLocation();
+            if (gameLocation == null)
+                gameLocation = "C:\\Program Files (x86)\\Origin Games\\Battlefield 1\\bf1.exe";
+            else
+                gameLocation += "bf1.exe";
+
+            Properties.Settings.Default.gameLocation = gameLocation;
         }
         else
-        {
-            hostname = hostnameVar;
-        }
+            gameLocation = Properties.Settings.Default.gameLocation;
         groupId = Properties.Settings.Default.groupId;
-        gameLocation = Properties.Settings.Default.gameLocation;
+
         this.RefreshMessages();
         messageServer = Properties.Settings.Default.messageServer;
         messageStart = Properties.Settings.Default.messageStart;
@@ -58,13 +67,9 @@ internal class Config
     {
         StringCollection message = Properties.Settings.Default.sendMessage;
         if (message != null)
-        {
             sendMessage = message.Cast<string>().ToList();
-        }
         else
-        {
             sendMessage = new List<string>();
-        }
         messageServer = Properties.Settings.Default.messageServer;
     }
 

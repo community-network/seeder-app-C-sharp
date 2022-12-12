@@ -1,4 +1,5 @@
-﻿using seeder_app_C_sharp.Actions;
+﻿using Microsoft.Win32;
+using seeder_app_C_sharp.Actions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -81,6 +82,26 @@ internal class Game
             EaDesktop.Restart();
 
         Origin.Restart();
+    }
+
+    public static string GameLocation()
+    {
+        try
+        {
+            using (var key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\EA Games\\Battlefield 1", false)) // False is important!
+            {
+                var s = key?.GetValue("Install Dir") as string;
+                if (!string.IsNullOrWhiteSpace(s))
+                {
+                    return s;
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            Debug.WriteLine($"Battlefield 1 not found in ea games {ex.Message}");
+        }
+        return null;
     }
 
     // For Windows Mobile, replace user32.dll with coredll.dll

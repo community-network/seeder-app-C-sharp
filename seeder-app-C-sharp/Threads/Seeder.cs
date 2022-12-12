@@ -39,12 +39,9 @@ internal class Seeder
                     int stringLength = current_server_reader.ServerName.Length > 20 ? 20 : current_server_reader.ServerName.Length;
                     this.states.current_server = $"{current_server_reader.ServerName.Substring(0, stringLength)} - {current_server_reader.PlayerListsAll.Count} players";
                 } else if (this.game_info.Is_Running)
-                {
                     this.states.current_server = $"Joining id {this.joiningServer}";
-                } else
-                {
+                else
                     this.states.current_server = "N/A";
-                }
 
                 // handle seeder
                 PrepareSeeder();
@@ -95,21 +92,15 @@ internal class Seeder
 
         // Action selector
         if (new_server.action == "joinServer")
-        {
             seeder_type = new SeederTypes.Init(new SeederTypes.JoinServer());
-        } else if (new_server.action == "restartOrigin")
-        {
+        else if (new_server.action == "restartOrigin")
             seeder_type = new SeederTypes.Init(new SeederTypes.RestartOrigin());
-        } else if (new_server.action == "shutdownPC")
-        {
+        else if (new_server.action == "shutdownPC")
             seeder_type = new SeederTypes.Init(new SeederTypes.ShutdownPc());
-        } else if (new_server.action == "rebootPC")
-        {
+        else if (new_server.action == "rebootPC")
             seeder_type = new SeederTypes.Init(new SeederTypes.RebootPc());
-        } else if (new_server.action == "broadcastMessage")
-        {
+        else if (new_server.action == "broadcastMessage")
             seeder_type = new SeederTypes.Init(new SeederTypes.BroadcastMessage());
-        }
 
         return (current_game_id, new_game_id, seeder_type);
     }
@@ -118,9 +109,7 @@ internal class Seeder
     {
         // run once
         if (new_server.timeStamp != old_server.timeStamp && !a_hour)
-        {
             seeder_type.Run();
-        }
         // run once but request is older than 1 hour
         else if (new_server.timeStamp != old_server.timeStamp && a_hour)
         {

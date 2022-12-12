@@ -10,9 +10,7 @@ internal class Origin
     {
         Process[] origin_process = Process.GetProcessesByName("Origin");
         if (origin_process.Length > 0)
-        {
             origin_process.First().Kill();
-        }
         Process.Start("C:\\Program Files (x86)\\Origin\\Origin.exe", "");
     }
 
@@ -22,9 +20,7 @@ internal class Origin
         Console.WriteLine("Launching game...");
         string command = "";
         if (!config.usableClient)
-        {
             command += "-Window.Fullscreen false -RenderDevice.MinDriverRequired false -Core.HardwareGpuBias -1 -Core.HardwareCpuBias -1 -Core.HardwareProfile Hardware_Low -RenderDevice.CreateMinimalWindow true -RenderDevice.NullDriverEnable true -Texture.LoadingEnabled false -Texture.RenderTexturesEnabled false -Client.TerrainEnabled false -Decal.SystemEnable false ";
-        }
         command += "-webMode MP -Origin_NoAppFocus --activate-webhelper -requestState State_ClaimReservation -gameId ";
         command += game_id;
         command += " -gameMode MP -role ";

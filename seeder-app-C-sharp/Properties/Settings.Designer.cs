@@ -37,7 +37,7 @@ namespace seeder_app_C_sharp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Origin Games\\Battlefield 1\\bf1.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string gameLocation {
             get {
                 return ((string)(this["gameLocation"]));

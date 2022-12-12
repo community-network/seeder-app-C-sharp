@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="gameLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files (x86)\Origin Games\Battlefield 1\bf1.exe</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="sendMessage" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
