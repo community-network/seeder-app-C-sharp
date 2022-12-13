@@ -42,6 +42,9 @@ internal class EaDesktop
 
         iniParser config_ini = new iniParser(file.FullName);
         config_ini.Set("", "user.gamecommandline.origin.ofr.50.0000557", launch_settings);
+        config_ini.Set("", "user.gamecommandline.origin.ofr.50.0001382", launch_settings);
+        config_ini.Set("", "user.gamecommandline.origin.ofr.50.0001665", launch_settings);
+        config_ini.Set("", "user.gamecommandline.origin.ofr.50.0001662", launch_settings);
         config_ini.Save();
     }
 
