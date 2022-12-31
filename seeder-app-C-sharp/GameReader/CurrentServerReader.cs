@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using gather_standalone.GameReader;
 
 namespace seeder_app_C_sharp.GameReader
 {
@@ -65,12 +66,12 @@ namespace seeder_app_C_sharp.GameReader
                 ServerDate = string.Format("{0:HH:mm:ss tt}", DateTime.Now);
                 // player data
 
-                for (int i = 0; i < 74; i++)
-                {
-                    List<string> WeaponSlot = new List<string>();
-                    var pClientPlayerBA = Player.GetPlayerById(i);
-                    if (!Memory.IsValid(pClientPlayerBA))
-                        continue;
+            for (int i = 0; i < 74; i++)
+            {
+                List<Dictionary<string, string>> WeaponSlot = new List<Dictionary<string, string>>();
+                var pClientPlayerBA = Player.GetPlayerById(i);
+                if (!Memory.IsValid(pClientPlayerBA))
+                    continue;
 
                     var platoonTag = Memory.ReadString(pClientPlayerBA + 0x2151, 16); // Platoon Tag
                     var fullName = Memory.ReadString(pClientPlayerBA + 0x2156, 64); // Name including platoon tag.
@@ -106,36 +107,36 @@ namespace seeder_app_C_sharp.GameReader
                             offset0 = Memory.Read<long>(offset0 + 0x38);
                             offset0 = Memory.Read<long>(offset0 + 0x20);
 
-                            var weapon_id = Memory.ReadString(offset0, 64);
-                            if (weapon_id != "")
-                            {
-                                WeaponSlot.Add(weapon_id);
-                            }
+                        var weapon_id = Memory.ReadString(offset0, 64);
+                        if (weapon_id != "")
+                        {
+                            WeaponSlot.Add(Statics.getItem(weapon_id));
                         }
                     }
-
-
-                    PlayerListsAll.Add(new Structs.PlayerList()
-                    {
-                        teamId = m_teamId,
-                        mark = m_playerIndex,
-                        platoon = new Structs.Platoon()
-                        {
-                            icon = platoonUrl,
-                            name = platoonName,
-                            tag = platoonTag
-                        },
-                        squad_id = SquadID,
-                        rank = 0,
-                        name = playerName,
-                        player_id = PersionID,
-                        kills = 0,
-                        deaths = 0,
-                        score = 0,
-                        vehicle = player_vehicle,
-                        weapons = WeaponSlot
-                    });
                 }
+
+
+                PlayerListsAll.Add(new Structs.PlayerList()
+                {
+                    teamId = m_teamId,
+                    mark = m_playerIndex,
+                    platoon = new Structs.Platoon()
+                    {
+                        icon = platoonUrl,
+                        name = platoonName,
+                        tag = platoonTag
+                    },
+                    squad_id = SquadID,
+                    rank = 0,
+                    name = playerName,
+                    player_id = PersionID,
+                    kills = 0,
+                    deaths = 0,
+                    score = 0,
+                    vehicle = Statics.getItem(player_vehicle),
+                    weapons = WeaponSlot
+                });
+            }
 
                 // scoreboard data
 
