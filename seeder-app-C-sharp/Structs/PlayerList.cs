@@ -19,10 +19,9 @@ internal class PlayerList
     public List<Dictionary<string, string>> weapons { get; set; }
 }
 
-    internal class Platoon
-    {
-        public string tag { get; set; }
-        public string name { get; set; }
-        public string icon { get; set; }
-    }
+internal class Platoon
+{
+    public string tag { get; set; }
+    public string name { get; set; }
+    public string icon { get; set; }
 }

@@ -65,6 +65,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CurrentServerLabel = new System.Windows.Forms.Label();
             this.CurrentServerText = new System.Windows.Forms.Label();
+            this.useEaDesktop = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.messageTimeout)).BeginInit();
             this.SuspendLayout();
             // 
@@ -272,7 +273,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(128, 153);
+            this.saveButton.Location = new System.Drawing.Point(128, 166);
             this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(56, 21);
@@ -421,11 +422,23 @@
             this.CurrentServerText.TabIndex = 39;
             this.CurrentServerText.Text = "N/A";
             // 
+            // useEaDesktop
+            // 
+            this.useEaDesktop.AutoSize = true;
+            this.useEaDesktop.Location = new System.Drawing.Point(94, 148);
+            this.useEaDesktop.Margin = new System.Windows.Forms.Padding(2);
+            this.useEaDesktop.Name = "useEaDesktop";
+            this.useEaDesktop.Size = new System.Drawing.Size(108, 19);
+            this.useEaDesktop.TabIndex = 40;
+            this.useEaDesktop.Text = "Use EA Desktop";
+            this.useEaDesktop.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(558, 226);
+            this.Controls.Add(this.useEaDesktop);
             this.Controls.Add(this.CurrentServerText);
             this.Controls.Add(this.CurrentServerLabel);
             this.Controls.Add(this.label1);
@@ -512,6 +525,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label CurrentServerLabel;
         private System.Windows.Forms.Label CurrentServerText;
+        private System.Windows.Forms.CheckBox useEaDesktop;
     }
 }
 

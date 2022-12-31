@@ -1,14 +1,13 @@
-﻿namespace seeder_app_C_sharp.Threads.SeederTypes
+﻿namespace seeder_app_C_sharp.Threads.SeederTypes;
+
+internal class BroadcastMessage : State
 {
-    internal class BroadcastMessage : State
+    public override void Handle(Init seeder_type)
     {
-        public override void Handle(Init seeder_type)
+        if (this.config.sendMessageBool)
         {
-            if (this.config.sendMessageBool)
-            {
-                this.states.program_state = "Broadcasting message to current server";
-                Game.SendMessage(this.current_server.gameId);
-            }
+            this.states.program_state = "Broadcasting message to current server";
+            Game.SendMessage(this.current_server.gameId);
         }
     }
 }
